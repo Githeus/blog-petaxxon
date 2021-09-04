@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
@@ -60,7 +61,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('posts.show',compact('post'));
     }
 
     /**
@@ -70,9 +71,34 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $r, Post $post)
     {
-        //
+        if($post->user_id != auth()->user()->id)
+            return response(['errors'=>"O usuário não possui autorização para editar este post"],401); 
+        
+        $validator = Validator::make($r->all(), [
+            'titulo' => 'nullable|max:255',
+            'conteudo' => 'nullable',
+        ]);
+        if ($validator->fails())
+            return response(['errors'=>$validator->errors()],401);
+
+        $toUpdate = Arr::where($validator->validated(), function ($value, $key){
+            return !is_null($value);
+        });
+    
+        try{
+            $post->update($toUpdate);
+        } catch(Exception $e){
+            return response()->json([
+                'message'=>"Não foi possível editar o post",
+                'errors'=>$e
+            ]);
+        }
+        return response()->json([
+            'message'=>"Post editado com sucesso"
+        ]); 
+
     }
 
     /**

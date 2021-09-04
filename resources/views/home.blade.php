@@ -32,14 +32,14 @@
                                 <small class="card-title">
                                     {{$p->user->name}} <br>
                                     {{$p->dataPostagem()}}
-                                    <a class="text-dark" href="">
-                                        <h3>
+                                    <a class="text-dark" href="{{route('post.show',$p)}}">
+                                        <h3 class="font-weight-bolder">
                                             {{$p->titulo}}
                                         </h3>
                                     </a>
                                 </small>
-                                <a class="text-dark" href="">
-                                    <p class="card-text">{{substr($p->conteudo,0,200)}}...</p>
+                                <a class="text-dark" href="{{route('post.show',$p)}}">
+                                    <p class="card-text text-justify">{{substr($p->conteudo,0,200)}}...</p>
                                 </a>
                                 <hr>
                                 {{$p->comentarios->count()}} comentários
