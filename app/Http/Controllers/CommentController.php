@@ -79,8 +79,20 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function delete(Comment $comment)
     {
-        //
+        if($comment->user_id != auth()->user()->id)
+            return response(['errors'=>"O usuário não possui autorização para excluir este comentário"],401); 
+        try{
+            $comment->delete();
+        } catch(Exception $e){
+            return response()->json([
+                'message'=>"Não foi possível excluir o comentário",
+                'errors'=>$e
+            ]);
+        }
+        return response()->json([
+            'message'=>"Comentário excluido com sucesso"
+        ]);
     }
 }

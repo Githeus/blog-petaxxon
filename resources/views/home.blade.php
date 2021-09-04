@@ -5,6 +5,9 @@
         .pagination{
             justify-content:center;
         }
+        body{
+            background-color: black;
+        }
     </style>
 @endpush
 
@@ -23,7 +26,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <h1>
+                <h1 class="text-white pl-4">
                     Últimas postagens
                 </h1>
                 <div class="row">

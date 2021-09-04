@@ -14,8 +14,8 @@
     </style>
     @stack('head')
 </head>
-<body class="bg-white">
-    <div class="container-fluid mb-4">
+<body>
+    <div class="container-fluid mb-4 bg-white">
         <div class="row">
             <div class="col-12 py-5 text-center">
                 <img src="{{asset('img/logo-horizontal.jpg')}}" class="img-fluid" style="width:30%" alt="" srcset="">
