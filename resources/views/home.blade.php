@@ -20,6 +20,8 @@
                 </div>
             </div>
             @endif
+        </div>
+        <div class="row">
             <div class="col-12">
                 <h1>
                     Últimas postagens
@@ -47,11 +49,10 @@
                         </div>
                     </div>
                     @endforeach
-                    <div class="col-12" style="justify-content:center">
-                        {{$posts}}
-                    </div>
-                </div>
-
+                </div>                
+            </div>
+            <div class="col-12" style="justify-content:center">
+                {{$posts}}
             </div>
         </div>
     </div>

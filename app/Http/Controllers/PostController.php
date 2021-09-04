@@ -107,8 +107,20 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function delete(Post $post)
     {
-        //
+        if($post->user_id != auth()->user()->id)
+            return response(['errors'=>"O usuário não possui autorização para excluir este post"],401); 
+        try{
+            $post->delete();
+        } catch(Exception $e){
+            return response()->json([
+                'message'=>"Não foi possível excluir o post",
+                'errors'=>$e
+            ]);
+        }
+        return response()->json([
+            'message'=>"Post excluido com sucesso"
+        ]);    
     }
 }
