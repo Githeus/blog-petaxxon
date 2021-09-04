@@ -5,7 +5,7 @@
 
 - Clone este projeto
 - Rode o comando: ` composer install `
-- Rode o comando: `cp .env.example .env`
+- Crie o seu arquivo .env ou rode o comando: `cp .env.example .env`
 - Edite o .env e insira as informações do banco de dados
 - Rode o comando: ` php artisan key:generate `
 - Rode o comando: ` php artisan migrate `
@@ -13,7 +13,7 @@
 
 # Instruções API
 ## Autenticação
-Para utilizar as funções de API é necessário obter o token de autenticação através da rota `api/login`
+**Para utilizar as funções de API é necessário obter o token de autenticação através da rota `api/login`**
 ### `api/login`
 - Request: 
     - email
