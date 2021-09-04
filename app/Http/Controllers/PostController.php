@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Post;
 use Exception;
 use Illuminate\Http\Request;
@@ -10,16 +11,6 @@ use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -62,6 +53,19 @@ class PostController extends Controller
     public function show(Post $post)
     {
         return view('posts.show',compact('post'));
+    }
+
+
+    /**
+     * Display the comments of the resource
+     *
+     * @param  \App\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+
+    public function comments(Post $post){
+        $comentarios = Comment::where('post_id',$post->id)->paginate(3);
+        return view('posts.comentarios',compact('post','comentarios'));
     }
 
     /**

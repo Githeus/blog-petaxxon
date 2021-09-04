@@ -13,5 +13,6 @@
 
 Route::get('/','HomeController@index');
 Route::get('/post/{post}','PostController@show')->name('post.show');
+Route::get('/post/{post}/comments','PostController@comments')->name('post.comments');
 
 Auth::routes();

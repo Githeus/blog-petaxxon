@@ -22,7 +22,7 @@
                 <h1 class="font-weight-bolder" style="font-family: 'Roboto',sans;">O blog do entretenimento e diversão</h1>
             </div>
             <div class="col-12 py-4 text-right" style="background-color: #d1a400;">
-                <a href="register" class="btn btn-light font-weight-bolder" style="margin-right:15%">Crie sua conta gratuitamente</a>
+                <a href="/register" class="btn btn-light font-weight-bolder" style="margin-right:15%">Crie sua conta gratuitamente</a>
             </div>
         </div>
     </div>

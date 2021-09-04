@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -18,18 +19,8 @@
             </p>
         </div>
         @if($post->comentarios->count())
-        <div class="col-12 p-3 shadow">
-            <h2>Comentários:</h2>
-            <ul class="list-group">
-                @foreach($post->comentarios as $c)
-                <li class="list-group-item ">
-                    <span class="lead font-weight-bold">
-                        {{$c->user->name}}
-                    </span> <br>
-                    {{$c->conteudo}}
-                </li>
-                @endforeach
-            </ul>
+        <div class="col-12 text-center">
+            <a href="{{route('post.comments',$post)}}" class="btn btn-primary font-weight-bolder">Visualizar {{$post->comentarios->count()}} comentários</a>
         </div>
         @endif
     </div>
