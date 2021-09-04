@@ -44,7 +44,7 @@
                                     <p class="card-text text-justify">{{substr($p->conteudo,0,200)}}...</p>
                                 </a>
                                 <hr>
-                                {{$p->comentarios->count()}} comentários
+                                <a class="text-dark" href="{{route('post.comments',$p->id)}}">{{$p->comentarios->count()}} comentários</a>
                             </div>
                         </div>
                     </div>
