@@ -10,7 +10,16 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="row">
+        <div class="row justify-content-center">
+            @if(session('success'))
+            <div class="col-6">
+                <div class="alert alert-success text-center" role="alert">
+                    <strong>
+                        {{session('success')}}
+                    </strong>
+                </div>
+            </div>
+            @endif
             <div class="col-12">
                 <h1>
                     Últimas postagens
