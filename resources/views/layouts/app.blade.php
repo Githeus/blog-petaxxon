@@ -21,8 +21,19 @@
                 <img src="{{asset('img/logo-horizontal.jpg')}}" class="img-fluid" style="width:30%" alt="" srcset="">
                 <h1 class="font-weight-bolder" style="font-family: 'Roboto',sans;">O blog do entretenimento e diversão</h1>
             </div>
-            <div class="col-12 py-4 text-right" style="background-color: #d1a400;">
-                <a href="/register" class="btn btn-light font-weight-bolder" style="margin-right:15%">Crie sua conta gratuitamente</a>
+            <div class="col-12 py-4" style="background-color: #d1a400;">
+                <div class="row px-4">
+                    <div class="col-6">
+                       <a href="/">
+                           <img src="{{asset('img/logo-horizontal.jpg')}}" class="bg-white p-1 rounded img-fluid" style="max-width: 300px;" alt="" srcset="">
+                       </a>
+                    </div>
+                    <div class="col-6 text-right">
+                        <a href="/register" class="btn btn-light font-weight-bolder">Crie sua conta gratuitamente</a>
+    
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
