@@ -17,11 +17,16 @@ use Illuminate\Http\Request;
 // Informar email e password
 Route::post('login','ApiController@login')->name('api.login');
 
+// ROTAS PROTEGIDAS PELO API_TOKEN
+// informar sempre api_token
 Route::middleware('auth:api')->group( function(){
-    Route::get('teste', function(){ return "funciona "; }  );
-    
+
     //POSTS
     Route::post('post/store','PostController@store');
     Route::post('post/{post}/update','PostController@update');
     Route::post('post/{post}/delete','PostController@delete');
+
+    //COMENTÁRIOS
+    Route::post('comment/store','CommentController@store');
+
 } );

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CommentController extends Controller
 {
@@ -23,9 +25,29 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $r)
     {
-        //
+        $validator = Validator::make($r->all(), [
+            'post_id' => 'required|exists:posts,id',
+            'conteudo' => 'required',
+        ]);
+        if ($validator->fails())
+            return response(['errors'=>$validator->errors()],401);
+        try{
+            $comment = Comment::create([
+                'user_id'=>auth()->user()->id,
+                'post_id'=>$r->post_id,
+                'conteudo'=>$r->conteudo
+            ]);
+        } catch(Exception $e){
+            return response()->json([
+                'message'=>"Não foi possível criar o comentário",
+                'errors'=>$e
+            ]);
+        }
+        return response()->json([
+            'message'=>"Comentário criado com sucesso"
+        ]);
     }
 
     /**
