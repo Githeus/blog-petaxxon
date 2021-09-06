@@ -10,17 +10,28 @@
 - Rode o comando: ` php artisan key:generate `
 - Rode o comando: ` php artisan migrate `
 ----------
+# **Instruções API**
 
-# Instruções API
-## Autenticação
-**Para utilizar as funções de API é necessário obter o token de autenticação através da rota `api/login`**
+## **Rotas públicas:**
+### Listar todos os posts
+- Rota: `api/post/list` (suporta paginação com parâmetro `page`)
+- Exemplo: `api/post/list?page=2 `
+### Exibir um post específico
+- Rota `api/post/{post_id}`
+### Listar comentários de um post
+- Rota `api/post/{post_id}/comments` (suporta paginação com parâmetro `page`)
+- Exemplo: `api/post/1/comments?page=2`
+
+
+-----
+## **Rotas protegidas por autenticação:**
+**Para utilizar estas funções de API é necessário obter o token de autenticação através da rota `api/login`**
 ### `api/login`
 - Request: 
     - email
     - password
 - Response: 
     - api_token
-----------
 
 ## Posts
 *Obs: Somente os próprios autores dos posts podem editar ou excluir*

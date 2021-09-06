@@ -17,6 +17,14 @@ use Illuminate\Http\Request;
 // Informar email e password
 Route::post('login','ApiController@login')->name('api.login');
 
+// posts
+Route::get('post/list','PostController@index');
+Route::get('post/{post}','PostController@apishow');
+
+// comentários
+Route::get('/post/{post}/comments','PostController@apicomments');
+
+
 // ROTAS PROTEGIDAS PELO API_TOKEN
 // informar sempre api_token
 Route::middleware('auth:api')->group( function(){

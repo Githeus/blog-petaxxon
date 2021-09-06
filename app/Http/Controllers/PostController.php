@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
+    public function index(){
+        return response()->json(Post::paginate(5));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -50,6 +53,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
+    public function apishow(Post $post)
+    {
+        return response()->json($post);
+    }
     public function show(Post $post)
     {
         return view('posts.show',compact('post'));
@@ -63,6 +70,10 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function apicomments(Post $post){
+        $comentarios = Comment::where('post_id',$post->id)->paginate(3);
+        return response()->json($comentarios);
+    }
     public function comments(Post $post){
         $comentarios = Comment::where('post_id',$post->id)->paginate(3);
         return view('posts.comentarios',compact('post','comentarios'));
