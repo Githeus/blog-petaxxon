@@ -1,5 +1,5 @@
 # INFORMAÇÕES DO SISTEMA
-> Este sistema foi desenvolvido em Laravel na versão 6
+> Este sistema foi desenvolvido em Laravel na versão 6 devido à um desafio proposto pela Petaxxon
 
 # INSTALAÇÃO DO PROJETO
 
